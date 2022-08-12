@@ -23,3 +23,23 @@ function creacteGalleryMarkup(galleryItems) {
 }
 
 imageContainer.insertAdjacentHTML("beforeend", imageMarkup);
+
+imageContainer.addEventListener("click", onGalleryClick);
+
+function onGalleryClick(evt) {
+  evt.preventDefault();
+  if (!evt.target.classList.contains("gallery__image")) {
+    return;
+  }
+  const instance = basicLightbox.create(`
+    <img src="${evt.target.dataset.source}" width="800" height="600">
+`);
+
+  instance.show();
+
+  document.addEventListener("keydown", (key) => {
+    if (key === "Escape") {
+      instance.close();
+    }
+  });
+}
