@@ -16,6 +16,10 @@
   margin-right: auto;
 }
 
+.gallery__li {
+  display: block;
+}
+
 .gallery__item {
   position: relative;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
