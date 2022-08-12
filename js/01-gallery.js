@@ -34,10 +34,15 @@ function onGalleryClick(evt) {
   const instance = basicLightbox.create(`
     <img src="${evt.target.dataset.source}" width="800" height="600">
 `);
-
   instance.show();
 
-  document.addEventListener("keydown", (key) => {
+  document.addEventListener("keydown", ({ key }) => {
+    if (key === "Escape") {
+      instance.close();
+    }
+  });
+
+  document.removeEventListener("keydown", ({ key }) => {
     if (key === "Escape") {
       instance.close();
     }
