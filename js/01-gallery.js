@@ -31,20 +31,26 @@ function onGalleryClick(evt) {
   if (!evt.target.classList.contains("gallery__image")) {
     return;
   }
-  const instance = basicLightbox.create(`
+  const instance = basicLightbox.create(
+    `
     <img src="${evt.target.dataset.source}" width="800" height="600">
-`);
+`,
+    {
+      onShow: () => {
+        document.addEventListener("keydown", onKeyAction);
+      },
+      onClose: () => {
+        document.removeEventListener("keydown", onKeyAction);
+      },
+    }
+  );
+
   instance.show();
 
-  document.addEventListener("keydown", ({ key }) => {
+  function onKeyAction({ key }) {
     if (key === "Escape") {
+      console.log("clock");
       instance.close();
     }
-  });
-
-  document.removeEventListener("keydown", ({ key }) => {
-    if (key === "Escape") {
-      instance.close();
-    }
-  });
+  }
 }
