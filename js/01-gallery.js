@@ -31,15 +31,17 @@ function onGalleryClick(evt) {
   if (!evt.target.classList.contains("gallery__image")) {
     return;
   }
+
   const instance = basicLightbox.create(
     `
     <img src="${evt.target.dataset.source}" width="800" height="600">
 `,
+
     {
-      btnOpen: () => {
+      onBtn: () => {
         document.addEventListener("keydown", onKeyAction);
       },
-      btnClose: () => {
+      closeBtn: () => {
         document.removeEventListener("keydown", onKeyAction);
       },
     }
@@ -49,8 +51,8 @@ function onGalleryClick(evt) {
 
   function onKeyAction({ key }) {
     if (key === "Escape") {
-      console.log("clock");
-      instance.close();
+      console.log("click");
+      // instance.close();
     }
   }
 }
