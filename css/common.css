@@ -38,6 +38,10 @@ h2 {
   line-height: 1.33;
 }
 
+h1 {
+  text-align: center;
+}
+
 input {
   display: block;
 
@@ -88,7 +92,8 @@ button {
   transition: background-color 250ms ease-in-out;
 }
 
-button:hover {
+button:hover,
+button:focus {
   background-color: #6c8cff;
 }
 
@@ -152,10 +157,15 @@ button:hover {
 /* Task 3 */
 
 #name-input {
-  margin-bottom: 16px;
+  margin: 0 auto 16px;
 }
 
 /* Task 4 */
+
+.login-form {
+  width: fit-content;
+  margin: 0 auto;
+}
 
 .login-form label:first-child {
   margin-bottom: 8px;
@@ -201,4 +211,31 @@ button:hover {
 
 #boxes > div {
   flex: 0 0 auto;
+}
+
+#controls {
+  display: flex;
+  gap: 16px;
+  background-color: #f6f6fe;
+  padding: 32px;
+  border-radius: 8px;
+
+  width: fit-content;
+  margin-bottom: 16px;
+}
+
+#controls input {
+  width: 150px;
+}
+
+#controls button {
+  width: 120px;
+}
+
+button[data-destroy] {
+  background-color: #ff4e4e;
+}
+
+button[data-destroy]:hover {
+  background-color: #ff7070;
 }
